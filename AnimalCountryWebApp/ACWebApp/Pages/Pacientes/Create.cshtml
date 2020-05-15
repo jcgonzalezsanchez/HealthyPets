@@ -1,0 +1,89 @@
+﻿@page
+@model ACWebApp.Pages.Pacientes.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3 class="">Nuevo Paciente</h3>
+
+<br />
+
+<div class="row">
+    <form method="post" class="col s12">
+        <input hidden asp-for="@Model.PropietarioId" />
+
+        <div>
+            <div class="row">
+                <div class="container">
+                    <input id="nombre" type="text" class="validate" asp-for="Paciente.Nombre">
+                    <label for="nombre">Nombre</label>
+                </div>
+                <div class="container">
+                    <input id="color" type="text" class="validate" asp-for="Paciente.Color">
+                    <label for="color">Color</label>
+                </div>
+                <div class="container">
+                    <input id="senas_particulares" type="text" asp-for="Paciente.SenasParticulares">
+                    <label for="senas_particulares">Señas Particulares</label>
+                </div>
+                <div class="container">
+                    <input id="zona" type="text" asp-for="Paciente.Zona">
+                    <label for="zona">Zona</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="container">
+                    <input id="chip" type="text" asp-for="Paciente.Chip">
+                    <label for="chip">Chip</label>
+                </div>
+                <div class="container">
+                    <input id="numero_chip" type="text" asp-for="Paciente.NumeroChip">
+                    <label for="numero_chip">Número Chip</label>
+                </div>
+                <div class="container">
+                    <input id="fecha_nacimiento" type="text" class="datepicker" asp-for="Paciente.FechaNacimiento">
+                    <label for="fecha_nacimiento">Fecha Nacimiento</label>
+                </div>
+                <div class="container">
+                    <input id="fecha_defuncion" type="text" class="datepicker" asp-for="Paciente.FechaDefuncion">
+                    <label for="fecha_defuncion">Fecha Defunción</label>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+
+                <div class="container">
+                    <input id="motivo_defuncion" type="text" asp-for="Paciente.MotivoDefuncion">
+                    <label for="motivo_defuncion">Motivo Defunción</label>
+                </div>
+                <div class="input-field col s12 m6 l6">
+                    <input id="observacion" type="text" asp-for="Paciente.Observacion">
+                    <label for="observacion">Orservación 2</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="center-align">
+            <button type="submit"
+                    class="btn btn-primary">
+                Guardar
+            </button>
+            <a asp-page="./Index"
+               class="btn btn-primary">
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
