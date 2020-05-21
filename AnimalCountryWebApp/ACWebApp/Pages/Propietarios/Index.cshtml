@@ -6,19 +6,22 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
+<div class="">
+    <h3>Pripietaios</h3>
+</div>
 
-<h3 class="justify-content-center">Pripietaios</h3>
 
 <br />
 
 <div>
-    <a asp-page="../Index"
-       class="btn btn-primary">
+    <a asp-page="/Dashboard/Index"
+       class="btn btn-success">
+        <i class="fas fa-plus-circle"></i>
         Regresar
     </a>
 
     <a asp-page="Create"
-       class="btn btn-primary">
+       class="btn btn-success">
         Crear
     </a>
 </div>
@@ -26,18 +29,19 @@
 <br />
 
 <form method="post">
-    <table class="table-responsive">
-        <thead>
-            <tr class="justify-content-xl-center">
+    <table class="table table-stripped table-hover table-responsive">
+        <thead class="table-dark">
+            <tr class="table-black">
                 <th class="center">Nombre</th>
-                <th class="center">TipoDocumento</th>
-                <th class="center">Identificacion</th>
+                <th class="center">Dumento</th>
+                <th class="center">Documento</th>
                 <th class="center">Ciudad</th>
                 <th class="center">Celular</th>
-                <th class="center">Nombre Paciente</th>
-                <th class="center">Editar</th>
-                <th class="center">Eliminar</th>
-                <th class="center">Crear Paciente</th>
+                <th class="center">Paciente</th>
+                <th class="center"></th>
+                <th class="center"></th>
+                <th class="center"></th>
+                <th class="center"></th>
             </tr>
         </thead>
         <tbody>
@@ -60,7 +64,7 @@
                 <td class="center">
                     <a asp-route-id="@item.Id"
                        asp-page="Edit"
-                       class="btn btn-primary">
+                       class="btn btn-success">
                         Editar
                     </a>
                 </td>
@@ -70,24 +74,24 @@
                     <button type="submit"
                             asp-page-handler="delete"
                             asp-route-id="@item.Id"
-                            class="btn btn-primary">
+                            class="btn btn-success">
                         Eliminar
                     </button>
                 </td>
 
                 <td class="center">
-                    <a asp-route-propietarioid="@item.Id"
-                       asp-page="../Pacientes/Create"
-                       class="btn btn-primary">
-                        Crear paciente
+                    <a asp-route-id="@item.Id"
+                       asp-page="Details"
+                       class="btn btn-success">
+                        Detalles
                     </a>
                 </td>
 
                 <td class="center">
-                    <a asp-route-id="@item.Id"
-                       asp-page="Details"
-                       class="btn btn-primary">
-                        Detalles
+                    <a asp-route-propietarioid="@item.Id"
+                       asp-page="../Pacientes/Create"
+                       class="btn btn-success">
+                       paciente
                     </a>
                 </td>
 
@@ -96,3 +100,7 @@
         </tbody>
     </table>
 </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
