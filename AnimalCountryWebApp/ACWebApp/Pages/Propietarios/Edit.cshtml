@@ -14,110 +14,96 @@
     <form method="post" class="col s12">
         <input hidden asp-for="Propietario.Id" />
 
-        <div>
-            <div class="row">
-                <div class="input-field col s12 m3 l3">
-                    <input id="primer_nombre" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.PrimerNombre">
-                    <label for="primer_nombre">Primer Nombre</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="segundo_nombre" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.SegundoNombre">
-                    <label for="segundo_nombre">Segundo Nombre</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="primer_apellido" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.PrimerApellido">
-                    <label for="primer_apellido">Primer Apellido</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="segundo_apellido" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.SegundoApellido">
-                    <label for="segundo_apellido">Segundo Apellido</label>
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="nombre">Nombre</label>
+                <input asp-for="Propietario.PrimerNombre" type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre...">
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="Apellido">Apellido</label>
+                <input asp-for="Propietario.PrimerApellido" type="text" class="form-control" id="apellido" placeholder="Ingrese su apellido...">
             </div>
         </div>
 
-        <div>
-            <div class="row">
-                <div class="input-field col s12 m6 l6">
-                    <select asp-for="Propietario.TipoIdentificacion">
-                        <option value="" disabled selected>Select document</option>
-                        <option value="Cédula">Cédula de ciudadanía</option>
-                        <option value="Cédula de extranjería">Cédula de extranjería</option>
-                        <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                    </select>
-                </div>
-                <div class="input-field col s12 m6 l6">
-                    <input id="nit" type="number" class="validate blue-text text-darken-4" asp-for="Propietario.Identificacion">
-                    <label for="nit">Número</label>
-                </div>
+        <br />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Tipo de documento</label>
+                <select asp-for="Propietario.TipoIdentificacion" class="custom-select" id="inlineFormCustomSelect">
+                    <option value="" selected>Seleccione documento...</option>
+                    <option value="Cédula">Cédula de ciudadanía</option>
+                    <option value="Cédula de extranjería">Cédula de extranjería</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                </select>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="nit">Número documento</label>
+                <input asp-for="Propietario.Identificacion" type="number" class="form-control" id="nit" placeholder="Ingrese el número...">
             </div>
         </div>
 
-        <div>
-            <div class="row">
+        <br />
 
-                <div class="input-field col s12 m4 l4">
-                    <select asp-for="Propietario.Ciudad">
-                        <option value="" disabled selected>Seleccione la ciudad</option>
-                        <option value="Bogota">Bogotá</option>
-                        <option value="Barranquilla">Barranquilla</option>
-                        <option value="Cali">Cali</option>
-                        <option value="Cartagena">Cartagena</option>
-                        <option value="Medellin">Medellín</option>
-                        <option value="SantaMarta">Santa Marta</option>
-                        <option value="OtraCiudad">Otra ciudad</option>
-                    </select>
-                </div>
-                <div class="input-field col s12 m4 l4">
-                    <input id="direccion" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.Direccion">
-                    <label for="direccion">Dirección</label>
-                </div>
-                <div class="input-field col s12 m4 l4">
-                    <input id="ocupacion" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.Ocupacion">
-                    <label for="ocupacion">Ocupación</label>
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Ciudad</label>
+                <select asp-for="Propietario.Ciudad" class="custom-select" id="inlineFormCustomSelect">
+                    <option value="" selected>Seleccione la ciudad...</option>
+                    <option value="Bogota">Bogotá</option>
+                    <option value="Barranquilla">Barranquilla</option>
+                    <option value="Cali">Cali</option>
+                    <option value="Cartagena">Cartagena</option>
+                    <option value="Medellin">Medellín</option>
+                    <option value="SantaMarta">Santa Marta</option>
+                    <option value="OtraCiudad">Otra ciudad</option>
+                </select>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="direccion">Dirección</label>
+                <input asp-for="Propietario.Direccion" type="text" class="form-control" id="direccion" placeholder="Ingrese su dirección...">
             </div>
         </div>
 
-        <div>
-            <div class="row">
+        <br />
 
-                <div class="input-field col s12 m3 l3">
-                    <input id="telefono1" type="number" class="validate blue-text text-darken-4" asp-for="Propietario.Telefono1">
-                    <label for="telefono1">Teléfono 1</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="telefono2" type="number" class="validate blue-text text-darken-4" asp-for="Propietario.Telefono2">
-                    <label for="telefono2">Teléfono 2</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="celular1" type="number" class="validate blue-text text-darken-4" asp-for="Propietario.Celular1">
-                    <label for="celular1">Celular 1</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="celular2" type="number" class="validate blue-text text-darken-4" asp-for="Propietario.Celular2">
-                    <label for="celular2">Celular 2</label>
-                </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="celular">Celular</label>
+                <input asp-for="Propietario.Celular1" type="number" class="form-control" id="celular" placeholder="Ingrese su celular...">
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="telefono">Teléfono</label>
+                <input asp-for="Propietario.Telefono1" type="number" class="form-control" id="telefono" placeholder="Ingrese su teléfono...">
             </div>
         </div>
 
-        <div>
-            <div class="row">
 
-                <div class="input-field col s12 m12 l12">
-                    <input id="observacion" type="text" class="validate blue-text text-darken-4" asp-for="Propietario.Observacion">
-                    <label for="observacion">Observación</label>
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <label for="observacion">Observación</label>
+                <input asp-for="Propietario.Observacion" type="text" class="form-control" id="observacion" placeholder="Ingrese una observación...">
             </div>
         </div>
 
-        <div class="center-align">
+        <br />
+
+        <div class="justify-content-center">
             <button type="submit"
-                    class="btn-floating btn waves-effect waves-light white-text blue darken-2 ">
-                <i class="material-icons">save</i>
+                    class="btn btn-success">
+                <i class="fas fa-save"></i>
+                Guardar
             </button>
+
             <a asp-page="./Index"
-               class="btn-floating btn waves-effect waves-light white-text blue darken-2">
-                <i class="material-icons">cancel</i>
+               class="btn btn-success">
+                <i class="fas fa-times-circle"></i>
+                Cancelar
             </a>
         </div>
 

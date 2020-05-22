@@ -15,7 +15,7 @@ namespace ACWebApp.Pages.Propietarios
         public PropietarioStore PropietarioStore { get; set; }
         public List<Propietario> Propietarios { get; set; }
 
-        public IndexModel(PropietarioStore propietarioStore)
+        public IndexModel(PropietarioStore propietarioStore, PacienteStore pacienteStore)
         {
             PropietarioStore = propietarioStore;
             Propietarios = PropietarioStore.GetPropietarios();
