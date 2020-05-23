@@ -9,8 +9,10 @@
     <title>@ViewData["Title"] - ACWebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/images/" />
-    <link href="~/css/all.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/images/" />*@
+    <link rel="stylesheet" href="~/css/all.css"  />
+
+
 </head>
 <body>
     <header>
@@ -25,35 +27,35 @@
                 {
                     <a class="navbar-brand" asp-area="" asp-page="/Index">Healthy Pets</a>
                 }
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <ul class="navbar-nav flex-grow-1">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
 
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-page="/Propietarios/Index">Propietarios</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-page="/Pacientes/Index">Pacientes</a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="nav-item active">
-                                    <a class="nav-link text-white" asp-area="" asp-page="/Index">Inicio</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Sobre nosotros</a>
-                                </li>
-                            }
-                        </ul>
-                    </div>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Propietarios/Index">Propietarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Pacientes/Index">Pacientes</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Index">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-page="/Privacy">Sobre nosotros</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
+            </div>
         </nav>
     </header>
     <div class="container">
@@ -71,6 +73,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>

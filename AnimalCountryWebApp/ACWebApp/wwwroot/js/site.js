@@ -3,14 +3,9 @@
 
 // Write your Javascript code.
 
-$(document).ready(function () {
-    $('.sidenav').sidenav();
-    $('.datepicker').datepicker({
-        yearRange: [2000, 2020],
-        format: 'dd/mm/yyyy'
-    });
-    $('select').formSelect(),
-        $('.carousel.carousel-slider').carousel({
-            fullWidth: true
-        });
-});
+//$(document).ready(function () {
+//    $('.sidenav').sidenav();
+//    $('.datepicker').datepicker({
+//        yearRange: [2000, 2020],
+//        format: 'dd/mm/yyyy'
+//    });

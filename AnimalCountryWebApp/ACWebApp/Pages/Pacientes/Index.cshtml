@@ -65,12 +65,12 @@
 
 
                 <td>
-                    <button type="submit"
-                            asp-page-handler="delete"
+                    <a 
                             asp-route-id="@item.Id"
+                            asp-page="Delete"
                             class="btn btn-outline-success btn-circle">
                         <i class="fas fa-trash-alt"></i>
-                    </button>
+                    </a>
                 </td>
 
                 <td>

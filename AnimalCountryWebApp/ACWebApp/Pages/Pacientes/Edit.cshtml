@@ -6,77 +6,91 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h3 class="center-align indigo-text text-darken-2">Editar Paciente</h3>
+<div class="text-center text-success">
+    <h3>Editar paciente</h3>
+</div>
 
-<br />
+<hr />
 
-<div class="row">
-    <form method="post" class="col s12">
+<div class="container">
+    <form method="post" class="col-12">
 
-        <div>
-            <div class="row">
-                <div class="input-field col s12 m3 l3">
-                    <input id="nombre" type="text" class="validate" asp-for="Paciente.Nombre">
-                    <label for="nombre">Nombre</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="color" type="text" class="validate" asp-for="Paciente.Color">
-                    <label for="color">Color</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="senas_particulares" type="text" asp-for="Paciente.SenasParticulares">
-                    <label for="senas_particulares">Señas Particulares</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="zona" type="text" asp-for="Paciente.Zona">
-                    <label for="zona">Zona</label>
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" class="was-validated form-control" asp-for="Paciente.Nombre" placeholder="Ingrese el nombre...">
             </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="color">Color</label>
+                <input id="color" type="text" class="was-validated form-control" asp-for="Paciente.Color" placeholder="Ingrese el color...">
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="senas_particulares">Señas Particulares</label>
+                <input id="senas_particulares" type="text" class="was-validated form-control" asp-for="Paciente.SenasParticulares" placeholder="Ingrese las señas...">
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="zona">Zona</label>
+                <input id="zona" type="text" class="was-validated form-control" asp-for="Paciente.Zona" placeholder="Ingrese la zona...">
+            </div>
+
         </div>
 
-        <div>
-            <div class="row">
-                <div class="input-field col s12 m3 l3">
-                    <input id="chip" type="text" asp-for="Paciente.Chip">
-                    <label for="chip">Chip</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="numero_chip" type="text" asp-for="Paciente.NumeroChip">
-                    <label for="numero_chip">Número Chip</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="fecha_nacimiento" type="text" class="datepicker" asp-for="Paciente.FechaNacimiento">
-                    <label for="fecha_nacimiento">Fecha Nacimiento</label>
-                </div>
-                <div class="input-field col s12 m3 l3">
-                    <input id="fecha_defuncion" type="text" class="datepicker" asp-for="Paciente.FechaDefuncion">
-                    <label for="fecha_defuncion">Fecha Defunción</label>
-                </div>
+        <br />
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="chip">Chip</label>
+                <input id="chip" type="text" class="form-control" asp-for="Paciente.Chip" placeholder="Ingrese el chip...">
             </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="numero_chip">Número Chip</label>
+                <input id="numero_chip" type="text" class="form-control" asp-for="Paciente.NumeroChip" placeholder="Ingrese número...">
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="datepicker">Fecha Nacimiento</label>
+                <input id="datepicker" type="text" class="form-control" asp-for="Paciente.FechaNacimiento">
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="fecha_defuncion">Fecha Defunción</label>
+                <input id="fecha_defuncion" type="text" class="form-control" asp-for="Paciente.FechaDefuncion">
+            </div>
+
         </div>
 
-        <div>
-            <div class="row">
+        <br />
 
-                <div class="input-field col s12 m6 l6">
-                    <input id="motivo_defuncion" type="text" asp-for="Paciente.MotivoDefuncion">
-                    <label for="motivo_defuncion">Motivo Defunción</label>
-                </div>
-                <div class="input-field col s12 m6 l6">
-                    <input id="observacion" type="text" asp-for="Paciente.Observacion">
-                    <label for="observacion">Orservación 2</label>
-                </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="motivo_defuncion">Motivo Defunción</label>
+                <input id="motivo_defuncion" type="text" class="form-control" asp-for="Paciente.MotivoDefuncion" placeholder="Ingrese el motivo...">
             </div>
-        </div>
 
-        <div class="center-align">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="observacion">Orservación</label>
+                <input id="observacion" type="text" class="form-control" asp-for="Paciente.Observacion" placeholder="Ingrese las observaciones...">
+            </div>
+
+        </div>
+        <br />
+
+        <div>
             <button type="submit"
-                    class="btn-floating btn waves-effect waves-light white-text blue darken-2 ">
-                <i class="material-icons">save</i>
+                    class="btn btn-success">
+                <i class="fas fa-save"></i>
+                Guardar
             </button>
+
             <a asp-page="./Index"
-               class="btn-floating btn waves-effect waves-light white-text blue darken-2 ">
-                <i class="material-icons">cancel</i>
+               class="btn btn-success">
+                <i class="fas fa-times-circle"></i>
+                Cancelar
             </a>
         </div>
 
