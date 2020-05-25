@@ -31,7 +31,7 @@
 
         <div>
             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control mr-sm-2" id="txtsearch" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -71,7 +71,7 @@
                         <td>
                             @foreach (var p in @item.PropietarioPacientes)
                             {
-                                <a class="btn btn-link" asp-route-pacienteid="@item.Id" asp-page="../Pacientes/Details">@p.Paciente.Nombre</a>//Pendiente revisar
+                                <a class="btn btn-link" asp-route-id="@p.Paciente.Id" asp-page="../Pacientes/Details">@p.Paciente.Nombre</a>//Pendiente revisar
                             }
                         </td>
 
