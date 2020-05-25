@@ -21,20 +21,6 @@ namespace ACWebApp.Pages.Propietarios
             Propietarios = PropietarioStore.GetPropietarios();
         }
 
-
-        //public  IActionResult Index(string searchString)
-        //{
-        //    var propietarios = from p in PropietarioStore.GetPropietarioById
-        //                       select p;
-
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        propietarios = propietarios.Where(x => x.PrimerNombre(searchString));
-        //    }
-
-        //    return Page(propietarios.ToList());
-        //}
-
         public IActionResult OnPostDelete(Guid id)
         {
             PropietarioStore.DeletePropietario(id);

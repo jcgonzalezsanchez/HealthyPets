@@ -6,9 +6,13 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h3 class="center-align indigo-text text-darken-2">Editar Propietario</h3>
+<div class="text-center text-success">
+    <h2>Editar Propietario</h2>
+</div>
 
-<br />
+<hr />
+
+<h4 class="text-success">@Html.DisplayFor(model => model.Propietario.PrimerNombre) @Html.DisplayFor(model => model.Propietario.PrimerApellido)</h4>
 
 <div class="row">
     <form method="post" class="col s12">
@@ -26,7 +30,7 @@
             </div>
         </div>
 
-        <br />
+        <hr />
 
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -45,7 +49,7 @@
             </div>
         </div>
 
-        <br />
+        <hr />
 
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
@@ -68,7 +72,7 @@
             </div>
         </div>
 
-        <br />
+        <hr />
 
 
         <div class="row">
@@ -91,9 +95,9 @@
             </div>
         </div>
 
-        <br />
+        <hr />
 
-        <div class="justify-content-center">
+        <div class="btn-center">
             <button type="submit"
                     class="btn btn-success">
                 <i class="fas fa-save"></i>

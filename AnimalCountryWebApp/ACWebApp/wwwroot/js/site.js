@@ -12,7 +12,9 @@
 
 $(document).ready(function () {
     $('#datepicker').datepicker({
-        uiLibrary: 'bootstrap4'
+        uiLibrary: 'bootstrap4',
+        autoclose: true,
+        todayBtn: true
     });
 });
 

@@ -6,11 +6,15 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Más información del propietario</h1>
+<div class="text-center text-success">
+    <h2>Más información del Propietario</h2>
+</div>
+
+<hr />
+
+<h4 class="text-success">@Html.DisplayFor(model => model.Propietario.PrimerNombre) @Html.DisplayFor(model => model.Propietario.PrimerApellido)</h4>
 
 <div>
-    <h4>Propietario</h4>
-    <hr />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Propietario.PrimerNombre)
@@ -104,7 +108,9 @@
         </dd>
     </dl>
 </div>
+
 <div>
-    <a class="btn btn-success" asp-page="./Edit" asp-route-id="@Model.Propietario.Id"><i class="fas fa-edit"></i> Editar</a>  
-    <a class="btn btn-success" asp-page="./Index"><i class="fas fa-undo-alt"></i> Regresar</a>
+    <a class="btn btn-success" asp-page="./Edit" asp-route-id="@Model.Propietario.Id"><i class="fas fa-edit"></i> Editar</a>
+    <a class="btn btn-success" asp-page="./Index"><i class="fas fa-undo-alt"></i> Regresar a propietarios</a>
+    <a class="btn btn-success" asp-page="../Pacientes/Index"><i class="fas fa-undo-alt"></i> Regresar a pacientes</a>
 </div>

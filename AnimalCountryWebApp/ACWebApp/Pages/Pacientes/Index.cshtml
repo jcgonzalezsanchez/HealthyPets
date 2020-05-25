@@ -6,93 +6,108 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-    <div class="text-center text-success">
-        <h2>Pacientes</h2>
-    </div>
 
-<br />
-
-<div>
-    <a asp-page="/Propietarios/Index"
-       class="btn btn-success">
-        <i class="fas fa-undo-alt"></i>
-        Regresar
-    </a>
+<div class="text-center text-success">
+    <h2><i class="fas fa-paw"></i> Pacientes</h2>
 </div>
 
-<br />
+<hr />
 
-<form method="post">
-    <table class="table table-stripped table-hover table-responsive">
-        <thead class="table-dark">
-            <tr class="table-black">
-                <th>Nombre</th>
-                <th>Color</th>
-                <th>Señas Particulares</th>
-                <th>Zona</th>
-                <th>Chip</th>
-                <th>Nombre Propietario</th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+<div class="container">
+    <nav class="navbar navbar-light bg-light">
 
-            @foreach (var item in Model.Pacientes)
-            {
-            <tr>
-                <td>@item.Nombre</td>
-                <td>@item.Color</td>
-                <td>@item.SenasParticulares</td>
-                <td>@item.Zona</td>
-                <td>@item.Chip</td>
-                <td>
-                    @foreach (var p in @item.PropietarioPacientes)
-                    {
-                        <span>@p.Propietario.PrimerNombre @p.Propietario.PrimerApellido</span>
-                    }
-                </td>
+        <div>
+            <a asp-page="/Propietarios/Index"
+               class="btn btn-success">
+                <i class="fas fa-undo-alt"></i>
+                Regresar
+            </a>
+        </div>
 
-                <td>
-                    <a asp-route-id="@item.Id"
-                       asp-page="Edit"
-                       class="btn btn-outline-success">
-                        <i class="fas fa-edit"></i>
-                    </a>
-                </td>
+        <div>
+            <form class="form-inline">
+                <input class="form-control mr-sm-2" id="txtsearch" placeholder="Buscar un paciente..." aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+            </form>
+        </div>
 
+    </nav>
+</div>
 
-                <td>
-                    <a 
-                            asp-route-id="@item.Id"
-                            asp-page="Delete"
-                            class="btn btn-outline-success btn-circle">
-                        <i class="fas fa-trash-alt"></i>
-                    </a>
-                </td>
+<hr />
 
-                <td>
-                    <a asp-route-id="@item.Id"
-                       asp-page="Details"
-                       class="btn btn-outline-success">
-                        <i class="fas fa-info-circle"></i>
-                    </a>
-                </td>
+<div class="container text-center justify-content-center">
+    <form method="post">
+        <table class="table table-stripped table-hover table-responsive">
+            <thead class="table-dark">
+                <tr class="table-black">
+                    <th>Nombre</th>
+                    <th>Color</th>
+                    <th>Señas Particulares</th>
+                    <th>Zona</th>
+                    <th>Chip</th>
+                    <th>Nombre Propietario</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
 
-                <td>
-                    <a asp-route-propietarioid="@item.Id"
-                       asp-page="../Propietarios/Create"
-                       class="btn btn-success">
-                        <i class="fas fa-plus-circle"></i>
-                        Propietario
-                    </a>
-                </td>
+                @foreach (var item in Model.Pacientes)
+                {
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Color</td>
+                        <td>@item.SenasParticulares</td>
+                        <td>@item.Zona</td>
+                        <td>@item.Chip</td>
+                        <td>
+                            @foreach (var p in @item.PropietarioPacientes)
+                            {
+                                <a class="btn btn-link" asp-route-id="@p.Propietario.Id" asp-page="../Propietarios/Details">@p.Propietario.PrimerNombre @p.Propietario.PrimerApellido</a>
+                            }
+                        </td>
+
+                        <td>
+                            <a asp-route-id="@item.Id"
+                               asp-page="Edit"
+                               class="btn btn-outline-success">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
 
 
-            </tr>
-            }
-        </tbody>
-    </table>
-</form>
+                        <td>
+                            <a asp-route-id="@item.Id"
+                               asp-page="Delete"
+                               class="btn btn-outline-success btn-circle">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a asp-route-id="@item.Id"
+                               asp-page="Details"
+                               class="btn btn-outline-success">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </td>
+
+                        <td>
+                            <a asp-route-pacienteid="@item.Id"
+                               asp-page="../Propietarios/Create"
+                               class="btn btn-success">
+                                <i class="fas fa-plus-circle"></i>
+                                Propietario
+                            </a>
+                        </td>
+
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>

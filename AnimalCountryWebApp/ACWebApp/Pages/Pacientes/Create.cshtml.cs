@@ -32,7 +32,6 @@ namespace ACWebApp.Pages.Pacientes
             Paciente.PropietarioId = PropietarioId;
             PacienteStore.AddPaciente(Paciente);
             return RedirectToPage("./Index");
-
         }
 
         [BindProperty]
