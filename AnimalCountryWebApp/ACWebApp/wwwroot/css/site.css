@@ -26,8 +26,8 @@ for details on configuring this project to bundle and minify static web assets. 
 }
 
 .form-control:focus {
-    border-color: #6556BD !important;
-    box-shadow: 0 0 0 0.2rem rgba(101, 86, 189, 0.5) !important;
+    border-color: #00C851 !important;
+    box-shadow: 0 0 0 0.03rem rgba(0, 200, 81, 1) !important;
 }
 
 .btn-center {

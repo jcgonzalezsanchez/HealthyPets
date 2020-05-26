@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Tipo de documento</label>
-                <select asp-for="Propietario.TipoIdentificacion" class="custom-select" id="inlineFormCustomSelect">
+                <select asp-for="Propietario.TipoIdentificacion" class="custom-select form-control" id="inlineFormCustomSelect">
                     <option value="" selected>Seleccione documento...</option>
                     <option value="Cédula">Cédula de ciudadanía</option>
                     <option value="Cédula de extranjería">Cédula de extranjería</option>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <label class="mr-sm-2" for="inlineFormCustomSelect">Ciudad</label>
-                <select asp-for="Propietario.Ciudad" class="custom-select" id="inlineFormCustomSelect" required>
+                <select asp-for="Propietario.Ciudad" class="custom-select form-control" id="inlineFormCustomSelect" required>
                     <option value="" selected>Seleccione la ciudad...</option>
                     <option value="Bogota">Bogotá</option>
                     <option value="Barranquilla">Barranquilla</option>

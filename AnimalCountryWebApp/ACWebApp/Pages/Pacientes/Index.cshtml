@@ -36,9 +36,9 @@
 
 <hr />
 
-<div class="container text-center justify-content-center">
+<div class="container text-center">
     <form method="post">
-        <table class="table table-stripped table-hover table-responsive">
+        <table class="table table-stripped table-hover table-responsive col-12">
             <thead class="table-dark">
                 <tr class="table-black">
                     <th>Nombre</th>
@@ -66,7 +66,7 @@
                         <td>
                             @foreach (var p in @item.PropietarioPacientes)
                             {
-                                <a class="btn btn-link" asp-route-id="@p.Propietario.Id" asp-page="../Propietarios/Details">@p.Propietario.PrimerNombre @p.Propietario.PrimerApellido</a>
+                                <a class="btn btn-outline-success" asp-route-id="@p.Propietario.Id" asp-page="../Propietarios/Details">@p.Propietario.PrimerNombre @p.Propietario.PrimerApellido</a>
                             }
                         </td>
 

@@ -15,6 +15,7 @@ namespace ACWebApp.Models
         }
         [Key]
         public Guid Id { get; set; }
+        public Guid CompanyId { get; set; }
         [Required]
         public string PrimerNombre { get; set; }
         public string SegundoNombre { get; set; }
