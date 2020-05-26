@@ -7,11 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ACWebApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Propietario> Propietarios { get; set; }
         public DbSet<Paciente> Pacientes { get; set; }
         public DbSet<PropietarioPaciente> PropietarioPacientes { get; set; }
+        public DbSet<Company> Companies { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

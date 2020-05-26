@@ -12,6 +12,31 @@
             <h4>Crear una nueva cuenta en Healthy Pets.</h4>
             <hr />
             <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Company.Name"></label>
+                <input asp-for="Company.Name" class="form-control" />
+                <span asp-validation-for="Company.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Company.Nit"></label>
+                <input asp-for="Company.Nit" class="form-control" />
+                <span asp-validation-for="Company.Nit" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Company.Address"></label>
+                <input asp-for="Company.Address" class="form-control" />
+                <span asp-validation-for="Company.Address" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Company.Phone"></label>
+                <input asp-for="Company.Phone" class="form-control" />
+                <span asp-validation-for="Company.Phone" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Input.Email"></label>
                 <input asp-for="Input.Email" class="form-control" />

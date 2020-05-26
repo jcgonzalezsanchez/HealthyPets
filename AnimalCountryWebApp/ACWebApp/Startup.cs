@@ -14,6 +14,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ACWebApp.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using ACWebApp.Models;
+//using ACWebApp.Data.Migrations;
 
 namespace ACWebApp
 {
@@ -31,12 +33,16 @@ namespace ACWebApp
         {
             services.AddScoped<PropietarioStore>();
             services.AddScoped<PacienteStore>();
+            services.AddScoped<CompanyStore>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             services.AddRazorPages();
 
             services.AddTransient<IEmailSender, EmailSender>();
