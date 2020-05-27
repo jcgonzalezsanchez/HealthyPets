@@ -7,18 +7,21 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ACWebApp.Pages.Propietarios
 {
     public class IndexModel : PageModel
     {
+        private readonly UserManager<ApplicationUser> _userManager;
         public PropietarioStore PropietarioStore { get; set; }
         public List<Propietario> Propietarios { get; set; }
+        public ApplicationUser CurrentUser { get; set; }
 
-        public IndexModel(PropietarioStore propietarioStore, PacienteStore pacienteStore)
+        public IndexModel(UserManager<ApplicationUser> userManager, PropietarioStore propietarioStore, PacienteStore pacienteStore)
         {
             PropietarioStore = propietarioStore;
-            Propietarios = PropietarioStore.GetPropietarios();
+            _userManager = userManager;
         }
 
         public IActionResult OnPostDelete(Guid id)
@@ -27,9 +30,10 @@ namespace ACWebApp.Pages.Propietarios
             return RedirectToPage();
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            CurrentUser = await _userManager.GetUserAsync(User);
+            Propietarios = PropietarioStore.GetPropietarios(CurrentUser.CompanyId);
         }
-
     }
 }

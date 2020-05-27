@@ -51,9 +51,10 @@ namespace ACWebApp.Data
             Context.SaveChanges();
         }
 
-        internal List<Propietario> GetPropietarios()
+        internal List<Propietario> GetPropietarios(Guid companyId)
         {
             return Context.Propietarios
+                .Where(x => x.CompanyId == companyId)
                 .Include(x => x.PropietarioPacientes)
                 .ToList();
         }

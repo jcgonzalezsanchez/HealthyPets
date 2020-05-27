@@ -7,15 +7,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ACWebApp.Data;
 using ACWebApp.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ACWebApp.Pages.Propietarios
 {
     public class CreateModel : PageModel
     {
+        private readonly UserManager<ApplicationUser> _userManager;
+        public ApplicationUser CurrentUser { get; set; }
         public PropietarioStore PropietarioStore { get; set; }
-        public CreateModel(PropietarioStore propietarioStore)
+        public CreateModel(UserManager<ApplicationUser> userManager, PropietarioStore propietarioStore)
         {
             PropietarioStore = propietarioStore;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -29,14 +33,15 @@ namespace ACWebApp.Pages.Propietarios
             }
 
             //Add
+            //Propietario.CompanyId = CurrentUser.CompanyId;
             PropietarioStore.AddPropietario(Propietario);
             return RedirectToPage("./Index");
         }
 
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-
+            CurrentUser = await _userManager.GetUserAsync(User);
         }
     }
 }

@@ -14,6 +14,7 @@
 <div class="container">
     <form method="post" class="col-12">
 
+        <input hidden asp-for="Propietario.CompanyId" value="@Model.CurrentUser.CompanyId"/>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-6">
                 <label for="nombre">Nombre</label>
