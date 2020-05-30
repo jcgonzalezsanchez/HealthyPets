@@ -53,9 +53,10 @@ namespace ACWebApp.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     Name = table.Column<string>(maxLength: 100, nullable: false),
-                    Nit = table.Column<int>(maxLength: 12, nullable: false),
+                    Nit = table.Column<string>(maxLength: 12, nullable: false),
                     Address = table.Column<string>(maxLength: 100, nullable: false),
-                    City = table.Column<string>(nullable: false)
+                    City = table.Column<string>(nullable: false),
+                    Phone = table.Column<string>(maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -68,15 +69,15 @@ namespace ACWebApp.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     CompanyId = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    LastName = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(maxLength: 20, nullable: false),
+                    LastName = table.Column<string>(maxLength: 20, nullable: false),
                     IdentificationType = table.Column<string>(nullable: false),
-                    Identification = table.Column<string>(nullable: false),
+                    Identification = table.Column<string>(maxLength: 15, nullable: false),
                     City = table.Column<string>(nullable: true),
                     Address = table.Column<string>(nullable: true),
-                    Phone = table.Column<string>(nullable: false),
-                    MovilPhone = table.Column<string>(nullable: false),
-                    Email = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(maxLength: 10, nullable: true),
+                    MovilPhone = table.Column<string>(maxLength: 10, nullable: false),
+                    Email = table.Column<string>(maxLength: 30, nullable: true),
                     Obsevation = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -89,7 +90,7 @@ namespace ACWebApp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    PropietarioId = table.Column<Guid>(nullable: false),
+                    OwnerId = table.Column<Guid>(nullable: false),
                     Nombre = table.Column<string>(nullable: false),
                     Color = table.Column<string>(nullable: true),
                     SenasParticulares = table.Column<string>(nullable: true),
@@ -217,18 +218,17 @@ namespace ACWebApp.Migrations
                 columns: table => new
                 {
                     PacienteId = table.Column<Guid>(nullable: false),
-                    PropietarioId = table.Column<Guid>(nullable: false),
-                    OwnerId = table.Column<Guid>(nullable: true)
+                    OwnerId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PropietarioPacientes", x => new { x.PacienteId, x.PropietarioId });
+                    table.PrimaryKey("PK_PropietarioPacientes", x => new { x.PacienteId, x.OwnerId });
                     table.ForeignKey(
                         name: "FK_PropietarioPacientes_Owners_OwnerId",
                         column: x => x.OwnerId,
                         principalTable: "Owners",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_PropietarioPacientes_Pacientes_PacienteId",
                         column: x => x.PacienteId,

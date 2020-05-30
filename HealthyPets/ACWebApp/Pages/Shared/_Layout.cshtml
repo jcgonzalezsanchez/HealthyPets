@@ -21,7 +21,7 @@
                 <img src="~/images/HealthyPetsVerde.png" class="nav-logo">
                 @if (SignInManager.IsSignedIn(User))
                 {
-                    <a class="navbar-brand text-white">Healthy Pets</a>
+                    <a class="navbar-brand text-white" asp-area="" asp-page="/Dashboard/Index">Healthy Pets</a>
                 }
                 else
                 {
