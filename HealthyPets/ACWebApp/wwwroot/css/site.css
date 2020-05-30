@@ -102,4 +102,12 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+@media (min-width: 1024px) {
+    .table-responsive {
+        display: inline-table !important;
+    }
 
+    .body {
+        background-color: yellow;
+    }
+}

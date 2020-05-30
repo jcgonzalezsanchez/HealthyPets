@@ -15,9 +15,8 @@
 
 <div class="container">
     <form method="post" class="col-12">
+        <!--<input asp-for="Paciente.OwnerId" value="@Model.OwnerId" />-->
         <input hidden asp-for="@Model.OwnerId" />
-
-
         <div class="row">
             <div class="col-xs-12 col-sm-4 col-md-3">
                 <label for="nombre">Nombre</label>
@@ -97,11 +96,11 @@
             </a>
         </div>
 
-        
+
 
     </form>
-</div>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
