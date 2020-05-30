@@ -4,7 +4,20 @@
     ViewData["Title"] = "Log out";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    <p>Has cerrado sesión con éxito en la aplicación.</p>
-</header>
+    <header>
+        <h2 class="text-success text-center">Cerrar sesión</h2>
+
+        <hr />
+
+        <p class="text-success text-center">Has cerrado con exito la aplicaación.</p>
+
+        <hr />
+
+        <h5 class="text-success text-center">Te esperamos pronto de vuelta!</h5>
+    </header>
+
+    <hr />
+
+    <div class="text-center">
+        <a class="btn btn-success" asp-area="" asp-page="/Index">Continuar</a>
+    </div>

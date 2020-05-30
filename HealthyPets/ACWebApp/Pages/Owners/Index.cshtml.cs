@@ -9,31 +9,32 @@ using ACWebApp.Data;
 using ACWebApp.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace ACWebApp.Pages.Propietarios
+namespace ACWebApp.Pages.Owners
 {
     public class IndexModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
-        public PropietarioStore PropietarioStore { get; set; }
-        public List<Propietario> Propietarios { get; set; }
+        public OwnerStore OwnerStore { get; set; }
+        public List<Owner> Owners { get; set; }
         public ApplicationUser CurrentUser { get; set; }
 
-        public IndexModel(UserManager<ApplicationUser> userManager, PropietarioStore propietarioStore, PacienteStore pacienteStore)
+        public IndexModel(UserManager<ApplicationUser> userManager, OwnerStore ownerStore, PacienteStore pacienteStore)
         {
-            PropietarioStore = propietarioStore;
+            OwnerStore = ownerStore;
             _userManager = userManager;
+
         }
 
         public IActionResult OnPostDelete(Guid id)
         {
-            PropietarioStore.DeletePropietario(id);
+            OwnerStore.DeleteOwner(id);
             return RedirectToPage();
         }
 
         public async Task OnGetAsync()
         {
             CurrentUser = await _userManager.GetUserAsync(User);
-            Propietarios = PropietarioStore.GetPropietarios(CurrentUser.CompanyId);
+            Owners = OwnerStore.GetOwners(CurrentUser.CompanyId);
         }
     }
 }

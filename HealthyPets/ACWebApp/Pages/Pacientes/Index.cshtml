@@ -17,7 +17,7 @@
     <nav class="navbar navbar-light bg-light">
 
         <div>
-            <a asp-page="/Propietarios/Index"
+            <a asp-page="/Owners/Index"
                class="btn btn-success">
                 <i class="fas fa-undo-alt"></i>
                 Regresar
@@ -66,7 +66,7 @@
                         <td>
                             @foreach (var p in @item.PropietarioPacientes)
                             {
-                                <a class="btn btn-outline-success" asp-route-id="@p.Propietario.Id" asp-page="../Propietarios/Details">@p.Propietario.PrimerNombre @p.Propietario.PrimerApellido</a>
+                                <a class="btn btn-outline-success" asp-route-id="@p.Owner.Id" asp-page="../Owners/Details">@p.Owner.Name @p.Owner.LastName</a>
                             }
                         </td>
 
@@ -97,7 +97,7 @@
 
                         <td>
                             <a asp-route-pacienteid="@item.Id"
-                               asp-page="../Propietarios/Create"
+                               asp-page="../Owners/Create"
                                class="btn btn-success">
                                 <i class="fas fa-plus-circle"></i>
                                 Propietario

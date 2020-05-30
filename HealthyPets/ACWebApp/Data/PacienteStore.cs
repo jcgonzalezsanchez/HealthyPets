@@ -10,14 +10,14 @@ namespace ACWebApp.Data
     public class PacienteStore
     {
         public ApplicationDbContext Context { get; set; }
-        public PropietarioStore PropietarioStore { get; set; }
+        public OwnerStore OwnerStore { get; set; }
         public List<PropietarioPaciente> PropietarioPaciente { get; set; }
-        public PacienteStore(ApplicationDbContext context, PropietarioStore propietarioStore)
+        public PacienteStore(ApplicationDbContext context, OwnerStore ownerStore)
         {
             Context = context;
-            PropietarioStore = propietarioStore;
+            OwnerStore = ownerStore;
             PropietarioPaciente = Context.PropietarioPacientes
-                .Include(x => x.Propietario)
+                .Include(x => x.Owner)
                 .Include(x => x.Paciente)
                 .ToList();
         }
@@ -31,8 +31,8 @@ namespace ACWebApp.Data
 
         internal void DeletePaciente(Guid id)
         {
-            var propietario = Context.Pacientes.FirstOrDefault(x => x.Id == id);
-            Context.Pacientes.Remove(propietario);
+            var owner = Context.Pacientes.FirstOrDefault(x => x.Id == id);
+            Context.Pacientes.Remove(owner);
             Context.SaveChanges();
         }
 
@@ -45,11 +45,11 @@ namespace ACWebApp.Data
 
         internal void AddPaciente(Paciente paciente)
         {
-            Propietario propietario = PropietarioStore.GetPropietarioById(paciente.PropietarioId);
+            Owner owner = OwnerStore.GetOwnerById(paciente.OwnerId);
             PropietarioPaciente pp = new PropietarioPaciente
             {
                 PacienteId = paciente.Id,
-                PropietarioId = propietario.Id
+                OwnerId = owner.Id
 
             };
 

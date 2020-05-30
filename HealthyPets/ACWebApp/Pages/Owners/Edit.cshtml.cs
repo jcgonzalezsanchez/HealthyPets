@@ -9,22 +9,22 @@ using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Propietarios
+namespace ACWebApp.Pages.Owners
 {
     public class EditModel : PageModel
     {
-        public PropietarioStore PropietarioStore { get; set; }
-        public EditModel(PropietarioStore propietarioStore)
+        public OwnerStore OwnerStore { get; set; }
+        public EditModel(OwnerStore ownerStore)
         {
-            PropietarioStore = propietarioStore;
+            OwnerStore = ownerStore;
         }
 
         [BindProperty]
-        public Propietario Propietario { get; set; }
+        public Owner Owner { get; set; }
 
         public void OnGet(Guid id)
         {
-            Propietario = PropietarioStore.GetPropietarioById(id);
+            Owner = OwnerStore.GetOwnerById(id);
         }
 
         public IActionResult OnPostAsync()
@@ -34,7 +34,7 @@ namespace ACWebApp.Pages.Propietarios
                 return Page();
             }
             //Edit
-            PropietarioStore.EditPropietario(Propietario);
+            OwnerStore.EditOwner(Owner);
             return RedirectToPage("./Index");
         }
     }

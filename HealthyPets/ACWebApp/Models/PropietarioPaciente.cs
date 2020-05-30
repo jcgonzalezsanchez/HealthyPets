@@ -8,8 +8,8 @@ namespace ACWebApp.Models
     public class PropietarioPaciente
     {
         public Guid PacienteId { get; set; }
-        public Guid PropietarioId { get; set; }
+        public Guid OwnerId { get; set; }
         public Paciente Paciente { get; set; }
-        public Propietario Propietario { get; set; }
+        public Owner Owner { get; set; }
     }
 }

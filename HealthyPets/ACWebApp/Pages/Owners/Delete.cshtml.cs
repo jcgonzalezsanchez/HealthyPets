@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Propietarios
+namespace ACWebApp.Pages.Owners
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ACWebApp.Pages.Propietarios
         }
 
         [BindProperty]
-        public Propietario Propietario { get; set; }
+        public Owner Owner { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -29,9 +29,9 @@ namespace ACWebApp.Pages.Propietarios
                 return NotFound();
             }
 
-            Propietario = await _context.Propietarios.FirstOrDefaultAsync(m => m.Id == id);
+            Owner = await _context.Owners.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Propietario == null)
+            if (Owner == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace ACWebApp.Pages.Propietarios
                 return NotFound();
             }
 
-            Propietario = await _context.Propietarios.FindAsync(id);
+            Owner = await _context.Owners.FindAsync(id);
 
-            if (Propietario != null)
+            if (Owner != null)
             {
-                _context.Propietarios.Remove(Propietario);
+                _context.Owners.Remove(Owner);
                 await _context.SaveChangesAsync();
             }
 

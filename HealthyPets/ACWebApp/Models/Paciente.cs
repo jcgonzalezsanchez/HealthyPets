@@ -15,8 +15,8 @@ namespace ACWebApp.Models
         }
         [Key]
         public Guid Id { get; set; }
-        [ForeignKey("Propietario")]
-        public Guid PropietarioId { get; set; }
+        [ForeignKey("Owner")]
+        public Guid OwnerId { get; set; }
         [Required]
         public string Nombre { get; set; }
         public string Color { get; set; }

@@ -29,16 +29,16 @@ namespace ACWebApp.Pages.Pacientes
             }
             //Add
 
-            Paciente.PropietarioId = PropietarioId;
+            Paciente.OwnerId = OwnerId;
             PacienteStore.AddPaciente(Paciente);
             return RedirectToPage("./Index");
         }
 
         [BindProperty]
-        public Guid PropietarioId { get; set; }
-        public void OnGet(Guid propietarioid)
+        public Guid OwnerId { get; set; }
+        public void OnGet(Guid ownerid)
         {
-            PropietarioId = propietarioid;
+            OwnerId = ownerid;
         }
     }
 }

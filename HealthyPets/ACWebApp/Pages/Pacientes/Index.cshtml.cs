@@ -13,7 +13,7 @@ namespace ACWebApp.Pages.Pacientes
     public class IndexModel : PageModel
     {
         public PacienteStore PacienteStore { get; set; }
-        public PropietarioStore PropietarioStore { get; set; }
+        public OwnerStore OwnerStore { get; set; }
         public List<Paciente> Pacientes { get; set; }
 
         public IndexModel(PacienteStore pacienteStore)

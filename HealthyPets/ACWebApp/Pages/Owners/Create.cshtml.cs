@@ -9,21 +9,21 @@ using ACWebApp.Data;
 using ACWebApp.Models;
 using Microsoft.AspNetCore.Identity;
 
-namespace ACWebApp.Pages.Propietarios
+namespace ACWebApp.Pages.Owners
 {
     public class CreateModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
         public ApplicationUser CurrentUser { get; set; }
-        public PropietarioStore PropietarioStore { get; set; }
-        public CreateModel(UserManager<ApplicationUser> userManager, PropietarioStore propietarioStore)
+        public OwnerStore OwnerStore { get; set; }
+        public CreateModel(UserManager<ApplicationUser> userManager, OwnerStore ownerStore)
         {
-            PropietarioStore = propietarioStore;
+            OwnerStore = ownerStore;
             _userManager = userManager;
         }
 
         [BindProperty]
-        public Propietario Propietario { get; set; }
+        public Owner Owner { get; set; }
 
         public IActionResult OnPostAsync()
         {
@@ -34,7 +34,7 @@ namespace ACWebApp.Pages.Propietarios
 
             //Add
             //Propietario.CompanyId = CurrentUser.CompanyId;
-            PropietarioStore.AddPropietario(Propietario);
+            OwnerStore.AddOwner(Owner);
             return RedirectToPage("./Index");
         }
 

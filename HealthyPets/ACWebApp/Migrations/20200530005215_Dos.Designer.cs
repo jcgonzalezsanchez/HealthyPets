@@ -4,14 +4,16 @@ using ACWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ACWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200530005215_Dos")]
+    partial class Dos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,9 +114,8 @@ namespace ACWebApp.Migrations
                         .HasColumnType("nvarchar(12)")
                         .HasMaxLength(12);
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
+                    b.Property<int>("Phone")
+                        .HasColumnType("int")
                         .HasMaxLength(10);
 
                     b.HasKey("Id");
@@ -203,7 +204,7 @@ namespace ACWebApp.Migrations
                     b.Property<string>("Observacion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("OwnerId")
+                    b.Property<Guid>("PropietarioId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("SenasParticulares")
@@ -222,10 +223,13 @@ namespace ACWebApp.Migrations
                     b.Property<Guid>("PacienteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("OwnerId")
+                    b.Property<Guid>("PropietarioId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("PacienteId", "OwnerId");
+                    b.Property<Guid?>("OwnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("PacienteId", "PropietarioId");
 
                     b.HasIndex("OwnerId");
 
@@ -371,9 +375,7 @@ namespace ACWebApp.Migrations
                 {
                     b.HasOne("ACWebApp.Models.Owner", "Owner")
                         .WithMany("PropietarioPacientes")
-                        .HasForeignKey("OwnerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("OwnerId");
 
                     b.HasOne("ACWebApp.Models.Paciente", "Paciente")
                         .WithMany("PropietarioPacientes")

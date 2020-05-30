@@ -25,7 +25,7 @@ namespace ACWebApp.Areas.Identity.Pages.Account
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        public CompanyStore CompanyStore { get; set; }
+        public CompanyStore CompanyStore { get; set; } //jc
 
 
         public RegisterModel(
@@ -39,7 +39,7 @@ namespace ACWebApp.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            CompanyStore = companyStore;
+            CompanyStore = companyStore; //jc
         }
 
         [BindProperty]
@@ -54,7 +54,7 @@ namespace ACWebApp.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required(ErrorMessage = "El Email es requerido.")]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "El formato del Email no es valido.")]
             [Display(Name = "Email")]
             public string Email { get; set; }
 
@@ -82,8 +82,8 @@ namespace ACWebApp.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var companyId = Company.Id;
-                CompanyStore.AddCompany(Company);
+                var companyId = Company.Id; //jc
+                CompanyStore.AddCompany(Company); //jc
                 var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, CompanyId = companyId };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

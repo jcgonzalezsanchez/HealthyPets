@@ -46,10 +46,12 @@ namespace ACWebApp.Areas.Identity.Pages.Account
         {
             [Required(ErrorMessage = "El Email es requerido.")]
             [EmailAddress]
+            [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required(ErrorMessage = "El Password es requerido.")]
             [DataType(DataType.Password)]
+            [Display(Name = "Contraseña")]
             public string Password { get; set; }
 
             [Display(Name = "¿Recordarme?")]

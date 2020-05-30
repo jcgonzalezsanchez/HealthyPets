@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ACWebApp.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,14 +52,36 @@ namespace ACWebApp.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Nit = table.Column<int>(nullable: false),
-                    Address = table.Column<string>(nullable: true),
-                    Phone = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(maxLength: 100, nullable: false),
+                    Nit = table.Column<int>(maxLength: 12, nullable: false),
+                    Address = table.Column<string>(maxLength: 100, nullable: false),
+                    City = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Companies", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Owners",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    CompanyId = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: false),
+                    IdentificationType = table.Column<string>(nullable: false),
+                    Identification = table.Column<string>(nullable: false),
+                    City = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: false),
+                    MovilPhone = table.Column<string>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    Obsevation = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Owners", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,33 +104,6 @@ namespace ACWebApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pacientes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Propietarios",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(nullable: false),
-                    CompanyId = table.Column<Guid>(nullable: false),
-                    PrimerNombre = table.Column<string>(nullable: false),
-                    SegundoNombre = table.Column<string>(nullable: true),
-                    PrimerApellido = table.Column<string>(nullable: false),
-                    SegundoApellido = table.Column<string>(nullable: true),
-                    TipoIdentificacion = table.Column<string>(nullable: false),
-                    Identificacion = table.Column<string>(nullable: false),
-                    Ciudad = table.Column<string>(nullable: true),
-                    Direccion = table.Column<string>(nullable: true),
-                    Ocupacion = table.Column<string>(nullable: true),
-                    Telefono1 = table.Column<string>(nullable: false),
-                    Telefono2 = table.Column<string>(nullable: true),
-                    Celular1 = table.Column<string>(nullable: false),
-                    Celular2 = table.Column<string>(nullable: true),
-                    Correo = table.Column<string>(nullable: true),
-                    Observacion = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Propietarios", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -222,21 +217,22 @@ namespace ACWebApp.Migrations
                 columns: table => new
                 {
                     PacienteId = table.Column<Guid>(nullable: false),
-                    PropietarioId = table.Column<Guid>(nullable: false)
+                    PropietarioId = table.Column<Guid>(nullable: false),
+                    OwnerId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PropietarioPacientes", x => new { x.PacienteId, x.PropietarioId });
                     table.ForeignKey(
+                        name: "FK_PropietarioPacientes_Owners_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "Owners",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
                         name: "FK_PropietarioPacientes_Pacientes_PacienteId",
                         column: x => x.PacienteId,
                         principalTable: "Pacientes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_PropietarioPacientes_Propietarios_PropietarioId",
-                        column: x => x.PropietarioId,
-                        principalTable: "Propietarios",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -281,9 +277,9 @@ namespace ACWebApp.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PropietarioPacientes_PropietarioId",
+                name: "IX_PropietarioPacientes_OwnerId",
                 table: "PropietarioPacientes",
-                column: "PropietarioId");
+                column: "OwnerId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -316,10 +312,10 @@ namespace ACWebApp.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Pacientes");
+                name: "Owners");
 
             migrationBuilder.DropTable(
-                name: "Propietarios");
+                name: "Pacientes");
         }
     }
 }
