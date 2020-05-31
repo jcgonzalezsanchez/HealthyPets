@@ -102,7 +102,7 @@ namespace ACWebApp.Areas.Identity.Pages.Account.Manage
                 await _emailSender.SendEmailAsync(
                     Input.NewEmail,
                     "Confirme su email",
-                    $"Por favor confirme su cuenta por <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>haciendo clic aquí</a>.");
+                    $"Por favor confirme su cuenta <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>haciendo clic aquí</a>.");
 
                 StatusMessage = "El enlace de confirmación para cambiar el correo electrónico fue enviado. Por favor revise su correo electrónico.";
                 return RedirectToPage();

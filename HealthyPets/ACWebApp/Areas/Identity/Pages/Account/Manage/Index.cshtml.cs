@@ -90,7 +90,7 @@ namespace ACWebApp.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Tu perfil ha sido actualizado";
+            StatusMessage = "Su perfil ha sido actualizado";
             return RedirectToPage();
         }
     }

@@ -101,7 +101,7 @@ namespace ACWebApp.Areas.Identity.Pages.Account
                     //var body = _emailBody.GetHtmlBady(callbackUrl, "Htmls\\confirmEmailTemplate.html");
                     await _emailSender.SendEmailAsync(Input.Email, "Confirme su email",
                         //body);
-                        $"Por favor confirme su cuenta por <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>haciendo clic aquí</a>.");
+                        $"Por favor confirme su cuenta <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>haciendo clic aquí</a>.");
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
