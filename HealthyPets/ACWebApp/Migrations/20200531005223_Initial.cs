@@ -91,16 +91,16 @@ namespace ACWebApp.Migrations
                 {
                     Id = table.Column<Guid>(nullable: false),
                     OwnerId = table.Column<Guid>(nullable: false),
-                    Nombre = table.Column<string>(nullable: false),
-                    Color = table.Column<string>(nullable: true),
-                    SenasParticulares = table.Column<string>(nullable: true),
-                    Zona = table.Column<string>(nullable: true),
-                    Chip = table.Column<string>(nullable: true),
-                    NumeroChip = table.Column<string>(nullable: true),
+                    Nombre = table.Column<string>(maxLength: 10, nullable: false),
+                    Color = table.Column<string>(maxLength: 10, nullable: true),
+                    SenasParticulares = table.Column<string>(maxLength: 100, nullable: true),
+                    Zona = table.Column<string>(maxLength: 100, nullable: true),
+                    Chip = table.Column<string>(maxLength: 20, nullable: true),
+                    NumeroChip = table.Column<string>(maxLength: 20, nullable: true),
                     FechaNacimiento = table.Column<DateTime>(nullable: false),
                     FechaDefuncion = table.Column<DateTime>(nullable: true),
-                    MotivoDefuncion = table.Column<string>(nullable: true),
-                    Observacion = table.Column<string>(nullable: true)
+                    MotivoDefuncion = table.Column<string>(maxLength: 100, nullable: true),
+                    Observacion = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
