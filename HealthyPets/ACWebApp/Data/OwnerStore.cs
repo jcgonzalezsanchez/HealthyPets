@@ -1,5 +1,6 @@
 ﻿using ACWebApp.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace ACWebApp.Data
             this.Context.Owners.Remove(owner);
             Context.SaveChanges();
         }
+
 
         internal void AddOwner(Owner owner)
         {

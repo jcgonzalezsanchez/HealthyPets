@@ -45,12 +45,12 @@
 <div class="container text-center">
     <form method="post">
         <table id="ownersTable" class="table table-responsive table-stripped table-hover col-12">
-            <thead class="table-dark col-12">
+            <thead class="table-dark table-sm col-12">
                 <tr class="table-black">
                     <th>Nombre</th>
                     <th>Dumento</th>
                     <th>Número</th>
-                    <th>Ciudad</th>
+                    @*<th>Ciudad</th>*@
                     <th>Celular</th>
                     <th>Paciente</th>
                     <th></th>
@@ -67,7 +67,7 @@
                         <td>@item.Name @item.LastName</td>
                         <td>@item.IdentificationType</td>
                         <td>@item.Identification</td>
-                        <td>@item.City</td>
+                        @*<td>@item.City</td>*@
                         <td>@item.MovilPhone</td>
                         <td>
                             @foreach (var p in @item.PropietarioPacientes)
