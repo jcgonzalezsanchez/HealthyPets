@@ -18,7 +18,7 @@ namespace ACWebApp.Pages.Owners
         public List<Owner> Owners { get; set; }
         public ApplicationUser CurrentUser { get; set; }
 
-        public IndexModel(UserManager<ApplicationUser> userManager, OwnerStore ownerStore, PacienteStore pacienteStore)
+        public IndexModel(UserManager<ApplicationUser> userManager, OwnerStore ownerStore, PatientStore patientStore)
         {
             OwnerStore = ownerStore;
             _userManager = userManager;

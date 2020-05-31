@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace ACWebApp.Models
 {
-    public class PropietarioPaciente
+    public class OwnerPatient
     {
-        public Guid PacienteId { get; set; }
+        public Guid PatientId { get; set; }
         public Guid OwnerId { get; set; }
-        public Paciente Paciente { get; set; }
+        public Patient Patient { get; set; }
         public Owner Owner { get; set; }
     }
 }

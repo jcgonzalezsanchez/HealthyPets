@@ -12,12 +12,12 @@ namespace ACWebApp.Data
     public class OwnerStore
     {
         public ApplicationDbContext Context { get; set; }
-        public List<PropietarioPaciente> PropietarioPaciente { get; set; }
+        public List<OwnerPatient> OwnerPatient { get; set; }
         public OwnerStore(ApplicationDbContext context)
         {
             Context = context;
-            PropietarioPaciente = Context.PropietarioPacientes //*
-                .Include(x => x.Paciente) //*
+            OwnerPatient = Context.OwnersPatients
+                .Include(x => x.Patient)
                 .ToList();
         }
 
@@ -62,7 +62,7 @@ namespace ACWebApp.Data
         {
             return Context.Owners
                 .Where(x => x.CompanyId == companyId)
-                .Include(x => x.PropietarioPacientes) //*
+                .Include(x => x.OwnersPatients)
                 .ToList();
         }
     }

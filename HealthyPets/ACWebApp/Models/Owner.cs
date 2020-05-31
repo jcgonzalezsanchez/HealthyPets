@@ -60,7 +60,7 @@ namespace ACWebApp.Models
         [Display(Name = "Observación")]
         public string Obsevation { get; set; }
 
-        public List<PropietarioPaciente> PropietarioPacientes { get; set; }
+        public List<OwnerPatient> OwnersPatients { get; set; }
 
     }
 }

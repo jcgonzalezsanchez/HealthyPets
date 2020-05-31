@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace ACWebApp.Models
 {
-    public class Paciente
+    public class Patient
     {
-        public Paciente()
+        public Patient()
         {
             Id = Guid.NewGuid();
         }
@@ -24,7 +24,7 @@ namespace ACWebApp.Models
         [Required(ErrorMessage = "El nombre es requerido.")]
         [StringLength(10, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Nombre")]
-        public string Nombre { get; set; }
+        public string Name { get; set; }
 
 
         [StringLength(10, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
@@ -33,11 +33,11 @@ namespace ACWebApp.Models
 
         [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Señas particulares")]
-        public string SenasParticulares { get; set; }
+        public string ParticularSigns { get; set; }
 
         [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Zona de las señas")]
-        public string Zona { get; set; }
+        public string Zone { get; set; }
 
         [StringLength(20, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Chip")]
@@ -45,23 +45,23 @@ namespace ACWebApp.Models
 
         [StringLength(20, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Número del chip")]
-        public string NumeroChip { get; set; }
+        public string ChipNumber { get; set; }
 
         [Required(ErrorMessage = "La fecha de nacimiento es requerida.")]
         [Display(Name = "Fecha de nacimiento")]
-        public DateTime FechaNacimiento { get; set; }
+        public DateTime BirthDate { get; set; }
 
         [Display(Name = "Fecha de defunción")]
-        public Nullable<DateTime> FechaDefuncion { get; set; }
+        public Nullable<DateTime> DeathDate { get; set; }
 
         [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Motivo defunción")]
-        public string MotivoDefuncion { get; set; }
+        public string ReasonDate { get; set; }
 
         [StringLength(100, ErrorMessage = "El {0} debe tener al menos {2} y un máximo de {1} caracteres de longitud.", MinimumLength = 3)]
         [Display(Name = "Observación")]
-        public string Observacion { get; set; }
+        public string Observation { get; set; }
 
-        public List<PropietarioPaciente> PropietarioPacientes { get; set; }
+        public List<OwnerPatient> OwnersPatients { get; set; }
     }
 }

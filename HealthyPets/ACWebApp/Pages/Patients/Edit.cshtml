@@ -1,0 +1,118 @@
+﻿@page
+@model ACWebApp.Pages.Patients.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<div class="text-center text-success">
+    <h2>Editar Paciente</h2>
+</div>
+
+<hr />
+
+<h4 class="text-success">@Html.DisplayFor(model => model.Patient.Name)</h4>
+
+<div class="row">
+    <form method="post" class="col-12">
+        <input hidden asp-for="Patient.Id" />
+        <input hidden asp-for="Patient.OwnerId" />
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="nombre">Nombre</label>
+                <input id="nombre" type="text" class="form-control" asp-for="Patient.Name" placeholder="Ingrese el nombre...">
+                <span asp-validation-for="Patient.Name" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="color">Color</label>
+                <input id="color" type="text" class="form-control" asp-for="Patient.Color" placeholder="Ingrese el color...">
+                <span asp-validation-for="Patient.Color" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="senas_particulares">Señas Particulares</label>
+                <input id="senas_particulares" type="text" class="form-control" asp-for="Patient.ParticularSigns" placeholder="Ingrese las señas...">
+                <span asp-validation-for="Patient.ParticularSigns" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="zona">Zona</label>
+                <input id="zona" type="text" class="form-control" asp-for="Patient.Zone" placeholder="Ingrese la zona...">
+                <span asp-validation-for="Patient.Zone" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <br />
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="chip">Chip</label>
+                <input id="chip" type="text" class="form-control" asp-for="Patient.Chip" placeholder="Ingrese el chip...">
+                <span asp-validation-for="Patient.Chip" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="numero_chip">Número Chip</label>
+                <input id="numero_chip" type="text" class="form-control" asp-for="Patient.ChipNumber" placeholder="Ingrese número...">
+                <span asp-validation-for="Patient.ChipNumber" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="datepicker">Fecha Nacimiento</label>
+                <input id="datepicker" type="text" class="form-control" asp-for="Patient.BirthDate">
+                <span asp-validation-for="Patient.BirthDate" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-4 col-md-3">
+                <label for="datepickern">Fecha Defunción</label>
+                <input id="datepicker" type="text" class="form-control" asp-for="Patient.DeathDate">
+                <span asp-validation-for="Patient.DeathDate" class="text-danger"></span>
+            </div>
+
+        </div>
+
+        <br />
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="motivo_defuncion">Motivo Defunción</label>
+                <input id="motivo_defuncion" type="text" class="form-control" asp-for="Patient.ReasonDate" placeholder="Ingrese el motivo...">
+                <span asp-validation-for="Patient.ReasonDate" class="text-danger"></span>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-6">
+                <label for="observacion">Orservación</label>
+                <input id="observacion" type="text" class="form-control" asp-for="Patient.Observation" placeholder="Ingrese las observaciones...">
+                <span asp-validation-for="Patient.Observation" class="text-danger"></span>
+            </div>
+
+        </div>
+        <br />
+
+        <div>
+            <button type="submit"
+                    class="btn btn-success">
+                <i class="fas fa-save"></i>
+                Guardar
+            </button>
+
+            <a asp-page="./Index"
+               class="btn btn-success">
+                <i class="fas fa-times-circle"></i>
+                Cancelar
+            </a>
+        </div>
+
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

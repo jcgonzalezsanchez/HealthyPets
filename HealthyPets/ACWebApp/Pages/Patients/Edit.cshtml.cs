@@ -9,22 +9,22 @@ using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Pacientes
+namespace ACWebApp.Pages.Patients
 {
     public class EditModel : PageModel
     {
-        public PacienteStore PacienteStore { get; set; }
-        public EditModel(PacienteStore pacienteStore)
+        public PatientStore PatientStore { get; set; }
+        public EditModel(PatientStore patientStore)
         {
-            PacienteStore = pacienteStore;
+            PatientStore = patientStore;
         }
 
         [BindProperty]
-        public Paciente Paciente { get; set; }
+        public Patient Patient { get; set; }
 
         public void OnGet(Guid id)
         {
-            Paciente = PacienteStore.GetPacienteById(id);
+            Patient = PatientStore.GetPatientById(id);
         }
 
         public IActionResult OnPostAsync()
@@ -34,7 +34,7 @@ namespace ACWebApp.Pages.Pacientes
                 return Page();
             }
             //Edit
-            PacienteStore.EditPaciente(Paciente);
+            PatientStore.EditPatient(Patient);
             return RedirectToPage("./Index");
         }
     }

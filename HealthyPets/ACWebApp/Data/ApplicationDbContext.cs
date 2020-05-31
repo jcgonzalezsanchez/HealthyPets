@@ -10,8 +10,8 @@ namespace ACWebApp.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Owner> Owners { get; set; }
-        public DbSet<Paciente> Pacientes { get; set; }
-        public DbSet<PropietarioPaciente> PropietarioPacientes { get; set; }
+        public DbSet<Patient> Patients { get; set; }
+        public DbSet<OwnerPatient> OwnersPatients { get; set; }
         public DbSet<Company> Companies { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -22,7 +22,7 @@ namespace ACWebApp.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<PropietarioPaciente>().HasKey(x => new { x.PacienteId, x.OwnerId });
+            modelBuilder.Entity<OwnerPatient>().HasKey(x => new { x.PatientId, x.OwnerId });
         }
     }
 }

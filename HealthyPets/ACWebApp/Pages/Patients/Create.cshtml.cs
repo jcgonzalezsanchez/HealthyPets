@@ -8,18 +8,18 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Pacientes
+namespace ACWebApp.Pages.Patients
 {
     public class CreateModel : PageModel
     {
-        public PacienteStore PacienteStore { get; set; }
-        public CreateModel(PacienteStore pacienteStore)
+        public PatientStore PatientStore { get; set; }
+        public CreateModel(PatientStore patientStore)
         {
-            PacienteStore = pacienteStore;
+            PatientStore = patientStore;
         }
 
         [BindProperty]
-        public Paciente Paciente { get; set; }
+        public Patient Patient { get; set; }
 
         public IActionResult OnPostAsync()
         {
@@ -29,8 +29,8 @@ namespace ACWebApp.Pages.Pacientes
             }
             //Add
 
-            Paciente.OwnerId = OwnerId;
-            PacienteStore.AddPaciente(Paciente);
+            Patient.OwnerId = OwnerId;
+            PatientStore.AddPatient(Patient);
             return RedirectToPage("./Index");
         }
 

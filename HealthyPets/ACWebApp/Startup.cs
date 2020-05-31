@@ -32,7 +32,7 @@ namespace ACWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<OwnerStore>();
-            services.AddScoped<PacienteStore>();
+            services.AddScoped<PatientStore>();
             services.AddScoped<CompanyStore>();
 
             services.AddDbContext<ApplicationDbContext>(options =>

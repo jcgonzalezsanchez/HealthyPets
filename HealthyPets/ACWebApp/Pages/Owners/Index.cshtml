@@ -70,9 +70,9 @@
                         @*<td>@item.City</td>*@
                         <td>@item.MovilPhone</td>
                         <td>
-                            @foreach (var p in @item.PropietarioPacientes)
+                            @foreach (var p in @item.OwnersPatients)
                             {
-                                <a class="btn btn-outline-success" asp-route-id="@p.Paciente.Id" asp-page="../Pacientes/Details">@p.Paciente.Nombre</a>
+                                <a class="btn btn-outline-success" asp-route-id="@p.Patient.Id" asp-page="../Patients/Details">@p.Patient.Name</a>
                             }
                         </td>
 
@@ -102,7 +102,7 @@
 
                         <td>
                             <a asp-route-ownerid="@item.Id"
-                               asp-page="../Pacientes/Create"
+                               asp-page="../Patients/Create"
                                class="btn btn-success">
                                 <i class="fas fa-plus-circle"></i>
                                 <span>Paciente</span>

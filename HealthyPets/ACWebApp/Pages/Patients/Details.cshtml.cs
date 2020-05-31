@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Pacientes
+namespace ACWebApp.Pages.Patients
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace ACWebApp.Pages.Pacientes
             _context = context;
         }
 
-        public Paciente Paciente { get; set; }
+        public Patient Patient { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -28,9 +28,9 @@ namespace ACWebApp.Pages.Pacientes
                 return NotFound();
             }
 
-            Paciente = await _context.Pacientes.FirstOrDefaultAsync(m => m.Id == id);
+            Patient = await _context.Patients.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Paciente == null)
+            if (Patient == null)
             {
                 return NotFound();
             }

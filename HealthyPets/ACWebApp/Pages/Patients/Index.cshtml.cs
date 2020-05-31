@@ -8,23 +8,23 @@ using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Pacientes
+namespace ACWebApp.Pages.Patients
 {
     public class IndexModel : PageModel
     {
-        public PacienteStore PacienteStore { get; set; }
+        public PatientStore PatientStore { get; set; }
         public OwnerStore OwnerStore { get; set; }
-        public List<Paciente> Pacientes { get; set; }
+        public List<Patient> Patients { get; set; }
 
-        public IndexModel(PacienteStore pacienteStore)
+        public IndexModel(PatientStore pacienteStore)
         {
-            PacienteStore = pacienteStore;
-            Pacientes = PacienteStore.GetPacientes();
+            PatientStore = pacienteStore;
+            Patients = PatientStore.GetPatient();
         }
 
         public IActionResult OnPostDelete(Guid id)
         {
-            PacienteStore.DeletePaciente(id);
+            PatientStore.DeletePatient(id);
             return RedirectToPage();
         }
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ACWebApp.Data;
 using ACWebApp.Models;
 
-namespace ACWebApp.Pages.Pacientes
+namespace ACWebApp.Pages.Patients
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace ACWebApp.Pages.Pacientes
         }
 
         [BindProperty]
-        public Paciente Paciente { get; set; }
+        public Patient Patient { get; set; }
 
         public async Task<IActionResult> OnGetAsync(Guid? id)
         {
@@ -29,9 +29,9 @@ namespace ACWebApp.Pages.Pacientes
                 return NotFound();
             }
 
-            Paciente = await _context.Pacientes.FirstOrDefaultAsync(m => m.Id == id);
+            Patient = await _context.Patients.FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Paciente == null)
+            if (Patient == null)
             {
                 return NotFound();
             }
@@ -45,11 +45,11 @@ namespace ACWebApp.Pages.Pacientes
                 return NotFound();
             }
 
-            Paciente = await _context.Pacientes.FindAsync(id);
+            Patient = await _context.Patients.FindAsync(id);
 
-            if (Paciente != null)
+            if (Patient != null)
             {
-                _context.Pacientes.Remove(Paciente);
+                _context.Patients.Remove(Patient);
                 await _context.SaveChangesAsync();
             }
 
